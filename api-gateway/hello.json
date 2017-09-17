@@ -1,0 +1,81 @@
+{
+    "swagger": "2.0",
+    "basePath": "/myapp",
+    "info": {
+        "title": "/myapp",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/hello": {
+            "get": {
+                "operationId": "getHello",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                },
+                "x-openwhisk": {
+                    "action": "hello",
+                    "namespace": "19FT_demo",
+                    "package": "myapp",
+                    "url": "https://openwhisk.eu-gb.bluemix.net/api/v1/web/19FT_demo/myapp/hello.http"
+                }
+            },
+            "put": {
+                "operationId": "putHello",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                },
+                "x-openwhisk": {
+                    "action": "hello",
+                    "namespace": "19FT_demo",
+                    "package": "myapp",
+                    "url": "https://openwhisk.eu-gb.bluemix.net/api/v1/web/19FT_demo/myapp/hello.http"
+                }
+            }
+        }
+    },
+    "x-ibm-configuration": {
+        "assembly": {
+            "execute": [
+                {
+                    "operation-switch": {
+                        "case": [
+                            {
+                                "execute": [
+                                    {
+                                        "invoke": {
+                                            "target-url": "https://openwhisk.eu-gb.bluemix.net/api/v1/web/19FT_demo/myapp/hello.http",
+                                            "verb": "keep"
+                                        }
+                                    }
+                                ],
+                                "operations": [
+                                    "getHello"
+                                ]
+                            },
+                            {
+                                "execute": [
+                                    {
+                                        "invoke": {
+                                            "target-url": "https://openwhisk.eu-gb.bluemix.net/api/v1/web/19FT_demo/myapp/hello.http",
+                                            "verb": "keep"
+                                        }
+                                    }
+                                ],
+                                "operations": [
+                                    "putHello"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cors": {
+            "enabled": true
+        }
+    }
+}

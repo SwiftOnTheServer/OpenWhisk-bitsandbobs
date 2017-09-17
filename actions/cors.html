@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Test</h1>
+
+        <pre id="data">
+        </pre>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                jQuery.ajax({
+                    url: "https://openwhisk.eu-gb.bluemix.net/api/v1/web/19FT_dev/default/cors1",
+                    type: "GET",
+                    headers: {
+                        'X-Clacks-Overhead': 'GNU Terry Pratchett'
+                    },
+                    contentType: 'application/json; charset=utf-8',
+                    success: function(resultData) {
+                        console.log(resultData)
+                        $('#data').html("Action result is: " + JSON.stringify(resultData))
+                    },
+                    error : function(jqXHR, textStatus, errorThrown) {
+                        console.log("Error: " + textStatus)
+                        console.log(errorThrown)
+                        console.log(jqXHR)
+                        $('#data').html("Error")
+                    },
+                    timeout: 120000,
+                });
+            });
+        </script>
+    </body>
+    </html>

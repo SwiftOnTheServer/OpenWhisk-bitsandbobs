@@ -3,10 +3,10 @@
 //
 func main(args: [String:Any]) -> [String:Any] {
 
-    // unset the WebAction data as it gets in the way
-    // when testing what -p and -a final true do!
+    // unset the WebAction data except for __ow_method
     var args = args
-    args["__ow_meta_path"] = nil
+    args["__ow_headers"] = nil
+    args["__ow_path"] = nil
     args["__ow_meta_verb"] = nil
     args["__ow_meta_headers"] = nil
 
