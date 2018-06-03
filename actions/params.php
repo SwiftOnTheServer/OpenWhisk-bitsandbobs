@@ -5,10 +5,10 @@
 function main(array $args) : array
 {
     // unset the WebAction data except for __ow_method
-    unset($args["__ow_headers"]);
-    unset($args["__ow_path"]);
-    unset($args["__ow_meta_verb"]);
-    unset($args["__ow_meta_headers"]);
-
+    // unset($args["__ow_headers"]);
+    // unset($args["__ow_path"]);
+    // unset($args["__ow_meta_verb"]);
+    // unset($args["__ow_meta_headers"]);
+    var_dump($args);
     return $args;
 }

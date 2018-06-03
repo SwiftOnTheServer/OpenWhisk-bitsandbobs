@@ -9,11 +9,8 @@ func main(args: [String:Any]) -> [String:Any] {
 
     let data = ["ack": "\(now)"]
 
-    let json = WhiskJsonUtils.dictionaryToJsonString(jsonDict: data) ?? ""
-    let base64_string = Data(json.utf8).base64EncodedString()
-    
     return [
-        "body": base64_string, // Data(json.utf8).base64EncodedString(),
+        "body": data,
         "code": 200,
         "headers": [
             "Content-Type": "application/json",

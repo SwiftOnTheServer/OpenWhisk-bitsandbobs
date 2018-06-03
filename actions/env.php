@@ -9,15 +9,30 @@
 function main(array $args) : array
 {
     $env = $_ENV;
-    echo "env:";
+    echo "-------------- env: --------------\n";
     var_dump($env);
 
-    echo "args:";
+    echo "-------------- args: --------------\n";
     var_dump($args);
 
     $env["__OW_API_KEY"] = "**REDACTED**";
+
+    $body = null;
+    if (isset($args['__ow_body'])) {
+        echo "-------------- __ow_body: --------------\n";
+        var_dump($args['__ow_body']);
+        $body = base64_decode($args['__ow_body']);
+        echo "-------------- base64 decoded body: --------------\n";
+        var_dump($body);
+        $body = json_decode($body);
+        echo "-------------- body: --------------\n";
+        var_dump($body);
+    }
     return [
-        'args' => $args,
-        'env' => $env,
+        'body' => [
+            'args' => $args,
+            'env' => $env,
+            'body' => $body,
+        ]
     ];
 }

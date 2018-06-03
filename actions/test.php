@@ -1,8 +1,8 @@
 <?php
-
-function main(array $args) : array
-{
+function main($params) {
+    var_dump($params);
     return [
-        "body" => ["foo" => "bar"],
+        'outer_type' => gettype($params['payload']),
+        'inner_type' => gettype($params['payload']->inner),
     ];
 }

@@ -5,6 +5,7 @@
 // curl -k https://192.168.33.13/api/v1/web/guest/default/paramsjs.json | jq -S
 //
 function main(params) {
+    console.log(params)
     return {
         params: params,
     }
